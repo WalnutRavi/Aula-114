@@ -1,6 +1,7 @@
 var nosex=""
 var nosey=""
 function preload(){
+    mask=loadImage("mascara dekuDark.png")
 
 }
 function setup(){
@@ -17,13 +18,17 @@ function modelLoaded(){
 }
 function draw(){
     image(video,0,0,750,550)
-    circle(nosex,nosey,45)
+    //circle(nosex,nosey,45)
+    image(mask,nosex,nosey,150,150)
 }
 function gotPoses(results){
     if(results.length>0){
         // console.log(results)
-        nosex=results[0].pose.nose.x 
+        nosex=results[0].pose.nose.x-7
         nosey=results[0].pose.nose.y 
 
     }
+}
+function takeSnapshot(){
+    save("photo.png")
 }
